@@ -39,6 +39,13 @@ Step-by-Step:
 3. Return only the tasks that are not completed.
 */
 let isIncomplete = todos.filter(todo => todo.completed === false);
+function incompleteTask (todo, callback){
+  return todo.filter(callback)
+}
+
+let incompleteObjects = incompleteTask(todos, (todo)=> !todo.completed );
+console.log("revised");
+console.log(incompleteObjects);
 
 
 /*
@@ -59,16 +66,14 @@ Step-by-Step:
 2. Use an anonymous function to modify each object.
 3. Change the `completed` property to `true` for every task.
 */
-let isCompleted = todos.map((todo) => {
-//{todo.completed = true}); - this is what I would typically do for .map, but it changed the array for my final example
-return {...todo,
- completed: true}
-});
+let isCompleted = todos.map((todo) => ({...todo,
+//{todo.completed = true}); - this is what I would typically do for .map, but it changed the array for my final example {...todo,
+ completed: true})
+);
 console.log(todos);// this is me testing the original array did not get changed for final task
 //I got this example from mdn
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
 // ... is a spread operator and copies all key-value pairs
-//  todo represents the key:value pair in todos
 
 
 /*
